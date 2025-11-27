@@ -1,0 +1,2 @@
+# AppFastAPI
+uvicorn + Fastapi + pydantyc
