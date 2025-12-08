@@ -1,0 +1,23 @@
+from sqlalchemy import create_engine,Column,Integer,String
+from sqlalchemy.orm import Session
+from sqlalchemy.ext.declarative import declarative_base
+from AppFastAPI.app.config import DATABASE_URL
+from datetime import datetime
+
+Base = declarative_base()
+
+
+def connect_db():
+    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+    session = Session(engine)
+    return session
+
+class User(Base):
+    __tablename__ = "user"
+    id = Column(Integer, primary_key=True)
+    email = Column(String)
+    password = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
+    nick_name = Column(String)
+    created_at = Column(String, default=datetime.now())
